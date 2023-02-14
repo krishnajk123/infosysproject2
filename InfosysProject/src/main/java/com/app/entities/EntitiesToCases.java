@@ -12,19 +12,20 @@ import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
 public class EntitiesToCases {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "entity_id")
+   	 @JoinColumn(name = "entity_id")
 	private Entities entities;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "case_number")
+    	@JoinColumn(name = "case_number")
 	private Cases cases;
 	public EntitiesToCases(Cases cases) {
 		super();

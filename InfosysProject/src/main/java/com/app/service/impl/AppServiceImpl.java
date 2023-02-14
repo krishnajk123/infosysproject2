@@ -2,13 +2,11 @@ package com.app.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.app.entities.Cases;
 import com.app.entities.Entities;
 import com.app.repo.CasesRepository;
 import com.app.repo.EntitiesRepository;
 import com.app.service.AppService;
-
 import jakarta.transaction.Transactional;
 
 @Service

@@ -47,6 +47,7 @@ public class AppController {
 		Cases updatedCase = casesRepository.save(cases);
 		return ResponseEntity.ok(updatedCase);
 	}
+
 	@GetMapping(value="/{caseNumber}/entities")
 	public ResponseEntity<Long> getEntityCountForCase(@PathVariable String caseNumber) {
 		Cases aCase = casesRepository.findByCaseNumber(caseNumber);

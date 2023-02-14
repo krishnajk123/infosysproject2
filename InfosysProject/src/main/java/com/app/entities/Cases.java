@@ -13,13 +13,14 @@ import jakarta.persistence.OneToMany;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
 @Data
 @Entity
 @Setter
 @Getter
 public class Cases {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String caseNumber;
 	private Date createdAt;
