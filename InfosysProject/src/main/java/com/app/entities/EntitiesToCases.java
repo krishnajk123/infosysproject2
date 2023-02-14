@@ -43,8 +43,4 @@ public class EntitiesToCases {
 	    public int hashCode() {
 	        return Objects.hash(entities.getName(), cases.getCaseNumber());
 	    }
-	
-	
-	
-
-}
+	}

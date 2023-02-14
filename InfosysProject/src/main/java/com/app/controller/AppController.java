@@ -27,49 +27,31 @@ public class AppController {
 	private CasesRepository casesRepository;
 	@Autowired
 	private EntitiesRepository entitiesRepository;
-	
-	@PostMapping(value="/entities")
-    public ResponseEntity<Entities> createEntity(@RequestBody Entities entities) {
-        Entities savedEntity = entitiesRepository.save(entities);
-        URI location = ServletUriComponentsBuilder
-                           .fromCurrentRequest()
-                           .path("/{id}")
-                           .buildAndExpand(savedEntity.getId())
-                           .toUri();
-        return ResponseEntity.created(location).body(savedEntity);
-    }
-	
-	 @PostMapping(value="/{caseNumber}/entities")
-	    public ResponseEntity<Cases> addEntitiesToCase(@PathVariable String caseNumber, @RequestBody List<Long> entityIds) {
-	        Cases cases = casesRepository.findByCaseNumber(caseNumber);
-	                           
-	        List<Entities> entities = entitiesRepository.findByAllIds(entities);
-	        
-	        cases.setEntities(entities);
-	        Cases updatedCase = casesRepository.save(cases);
-	        return ResponseEntity.ok(updatedCase);
-	    }
-	
-	
-	 @GetMapping(value="/{caseNumber}/entities")
-	    public ResponseEntity<Long> getEntityCountForCase(@PathVariable String caseNumber) {
-	        Cases aCase = casesRepository.findByCaseNumber(caseNumber);
-	                           
-	        Long entityCount = aCase.getEntities().size();
-	        return ResponseEntity.ok(entityCount);
-	    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	@PostMapping(value="/entities")
+	public ResponseEntity<Entities> createEntity(@RequestBody Entities entities) {
+		Entities savedEntity = entitiesRepository.save(entities);
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(savedEntity.getId())
+				.toUri();
+		return ResponseEntity.created(location).body(savedEntity);
+	}
+
+	@PostMapping(value="/{caseNumber}/entities")
+	public ResponseEntity<Cases> addEntitiesToCase(@PathVariable String caseNumber, @RequestBody List<Long> entityIds) {
+		Cases cases = casesRepository.findByCaseNumber(caseNumber);
+		List<Entities> entities = entitiesRepository.findByAllIds(entities);
+		cases.setEntities(entities);
+		Cases updatedCase = casesRepository.save(cases);
+		return ResponseEntity.ok(updatedCase);
+	}
+	@GetMapping(value="/{caseNumber}/entities")
+	public ResponseEntity<Long> getEntityCountForCase(@PathVariable String caseNumber) {
+		Cases aCase = casesRepository.findByCaseNumber(caseNumber);
+
+		Long entityCount = aCase.getEntities().size();
+		return ResponseEntity.ok(entityCount);
+	}
 }

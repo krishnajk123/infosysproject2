@@ -28,8 +28,4 @@ public class AppServiceImpl implements AppService {
 		// TODO Auto-generated method stub
 		return casesRepository.findByCaseNumber(name);
 	}
-	
-	
-	
-
 }

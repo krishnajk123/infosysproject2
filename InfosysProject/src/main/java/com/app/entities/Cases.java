@@ -25,7 +25,4 @@ public class Cases {
 	private Date createdAt;
 	@OneToMany(mappedBy = "entities", cascade = CascadeType.ALL)
 	private Set<EntitiesToCases> entitiesToCases;
-	
-	
-
 }

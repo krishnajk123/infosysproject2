@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 public class Entities {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String address;
@@ -25,11 +25,10 @@ public class Entities {
 	private Date createdAt;
 	@OneToMany(mappedBy = "entities", cascade = CascadeType.ALL)
 	private Set<EntitiesToCases> entitiesToCases;
-	
-	public Entities(String name, EntitiesToCases...  entitiesToCases) {
-        this.name = name;
-        for(EntitiesToCases EntitiesToCases :  entitiesToCases) EntitiesToCases.setEntities(this);
-        this. entitiesToCases = Stream.of( entitiesToCases).collect(Collectors.toSet());
 
+	public Entities(String name, EntitiesToCases...  entitiesToCases) {
+		this.name = name;
+		for(EntitiesToCases EntitiesToCases :  entitiesToCases) EntitiesToCases.setEntities(this);
+		this. entitiesToCases = Stream.of( entitiesToCases).collect(Collectors.toSet());
 	}
 }
