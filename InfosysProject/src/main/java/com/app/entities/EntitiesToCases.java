@@ -1,7 +1,6 @@
 package com.app.entities;
 
 import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -18,15 +17,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class EntitiesToCases {
+
 	@Id
     	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
    	 @JoinColumn(name = "entity_id")
 	private Entities entities;
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     	@JoinColumn(name = "case_number")
 	private Cases cases;
+
 	public EntitiesToCases(Cases cases) {
 		super();
 		this.cases = cases;
